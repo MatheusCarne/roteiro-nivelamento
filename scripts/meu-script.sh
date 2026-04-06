@@ -2,32 +2,45 @@
 
 echo "Organizando projeto!"
 
-mkdir -p ../src ../tb ../include ../docs
+mkdir -p ../src ../tb ../include ../docs ../scripts
 
 # include (.vh)
-mv ../*.vh ../include/ 2>/dev/null
+for file in ../*.vh; do
+    if [ -f "$file" ]; then
+        echo "Movendo $file para include/"
+        mv -n "$file" ../include/
+    fi
+done
 
 # scripts (.tcl, .do, .sh)
-mv ../*.tcl ../scripts/ 2>/dev/null
-mv ../*.do ../scripts/ 2>/dev/null
+for file in ../*.tcl ../*.do ../*.sh; do
+    if [ -f "$file" ]; then
+        echo "Movendo $file para scripts/"
+        mv -n "$file" ../scripts/
+    fi
+done
 
 # docs (.md, .txt)
-mv ../*.md ../docs/ 2>/dev/null
-mv ../*.txt ../docs/ 2>/dev/null
+for file in ../*.md ../*.txt; do
+    if [ -f "$file" ]; then
+        echo "Movendo $file para docs/"
+        mv -n "$file" ../docs/
+    fi
+done
 
 # Testbench (.v com _tb ou test)
 for file in ../*.v; do
     if [[ "$file" == *_tb.v || "$file" == *test* || "$file" == *-tb.v ]]; then
-        mv "$file" ../tb/
         echo "Movendo $file para tb/"
+        mv -n "$file" ../tb/
     fi
 done
 
 # Arquivos restantes (.v → src)
 for file in ../*.v; do
     if [ -f "$file" ]; then
-        mv "$file" ../src/
         echo "Movendo $file para src/"
+        mv -n "$file" ../src/
     fi
 done
 

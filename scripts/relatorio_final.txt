@@ -1,0 +1,50 @@
+ola mundo - entre aspas
+ola mundo - entre chaves
+olaMundo
+=== RELATORIO DE CELULAS ===
+AND2: 11
+XOR2: 12
+flipflop_D: 5
+TOTAL: 28
+
+=== HIERARQUIA DO DESIGN ===
+
+somador_4bits
+  └── (apenas células primitivas)
+
+flipflop_D
+  └── (módulo primitivo - sem submódulos)
+
+contador_4bits
+  ├── flipflop_D (4 instâncias)
+  └── (células primitivas)
+
+=== FANOUT POR NET ===
+
+=== TOP 15 FANOUT ===
+rst: 4
+clk: 4
+w_carry1: 2
+w_carry2: 2
+count[0]: 2
+w11: 2
+A[0]: 2
+w2: 2
+w3: 2
+Cin: 2
+count[2]: 2
+A[2]: 2
+B[1]: 2
+w5: 2
+B[3]: 2
+
+=== FANOUT ZERO ===
+w10
+w1
+S[0]
+w4
+S[2]
+w7
+Cout
+S[1]
+S[3]
